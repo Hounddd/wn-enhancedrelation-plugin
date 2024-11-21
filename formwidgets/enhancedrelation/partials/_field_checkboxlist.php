@@ -54,8 +54,6 @@ $quickselectEnabled = $field->getConfig('quickselect', $isScrollable);
                     <a href="javascript:;" data-field-checkboxlist-all>
                         <i class="icon-check-square"></i> <?= e(trans('backend::lang.form.select_all')) ?>
                     </a>
-                </div>
-                <div>
                     <a href="javascript:;" data-field-checkboxlist-none>
                         <i class="icon-eraser"></i> <?= e(trans('backend::lang.form.select_none')) ?>
                     </a>
@@ -67,13 +65,9 @@ $quickselectEnabled = $field->getConfig('quickselect', $isScrollable);
                     <a href="javascript:;" data-field-checkboxlist-expand-all>
                         <i class="icon-plus-square-o"></i> <?= e(trans('hounddd.enhancedrelationformwidget::lang.form.expand_all')) ?>
                     </a>
-                </div>
-                <div>
                     <a href="javascript:;" data-field-checkboxlist-expand-checked>
                         <i class="icon-check-square-o"></i> <?= e(trans('hounddd.enhancedrelationformwidget::lang.form.expand_checked')) ?>
                     </a>
-                </div>
-                <div>
                     <a href="javascript:;" data-field-checkboxlist-collapse-all>
                         <i class="icon-minus-square-o"></i> <?= e(trans('hounddd.enhancedrelationformwidget::lang.form.collapse_all')) ?>
                     </a>

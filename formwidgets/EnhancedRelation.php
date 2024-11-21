@@ -132,11 +132,6 @@ class EnhancedRelation extends \Backend\FormWidgets\Relation
                 ? $result->listsNested($nameFrom, $primaryKeyName)
                 : $result->lists($nameFrom, $primaryKeyName);
 
-            // debug(
-            //     $result,
-            //     $field->options,
-            // );
-
             if ($usesTree) {
                 if ($this->displayTree) {
                     /*
@@ -171,8 +166,6 @@ class EnhancedRelation extends \Backend\FormWidgets\Relation
             } else {
                 $field->options = $result->lists($nameFrom, $primaryKeyName);
             }
-
-            // debug($field->options);
 
             return $field;
         });

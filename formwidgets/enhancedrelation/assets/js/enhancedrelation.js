@@ -40,12 +40,6 @@
                 var $this = $(this);
                 openLevel($this)
             });
-
-
-
-            // Update scrollbar height
-            // $('[data-control=scrollbar]').data('oc.scrollbar').update();
-            console.log($('[data-control=scrollbar]').data('oc.scrollbar'));
         });
 
         // Collapse all action
