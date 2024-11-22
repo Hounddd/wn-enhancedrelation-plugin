@@ -17,12 +17,34 @@
         el.find('> .checkboxlist-children').removeClass('open');
     }
 
+    function openAll(elements) {
+        elements.each(function () {
+            openLevel($(this));
+        });
+    }
+
+    function closeAll(elements) {
+        elements.each(function () {
+            closeLevel($(this));
+        });
+    }
+
+    function updateScollBar() {
+        // Update scrollbar height
+        // Set a timer for .55s, waiting for the css animation to complete
+        setTimeout(function () {
+            $('[data-control=scrollbar]').data('oc.scrollbar').update();
+        }, 550);
+    }
+
     $(document).render(function () {
+        var $checkboxListItems = $('.field-checkboxlist .checkboxlist-item');
+
         $('.checkboxlist-item a.checkboxlist-item-expand-collapse').off().on('click', function (e) {
             e.preventDefault();
 
             var $this = $(this);
-            var $parent= $this.parent();
+            var $parent= $this.parent('.checkboxlist-item');
 
             if ($parent.hasClass('open')) {
                 closeLevel($parent);
@@ -34,34 +56,26 @@
         // Open all action
         $('[data-field-checkboxlist-expand-all]').off().on('click', function (e) {
             e.preventDefault();
-            var $this = $(this);
 
-            $this.closest('.field-checkboxlist').find('.checkboxlist-item').each(function () {
-                var $this = $(this);
-                openLevel($this)
-            });
+            openAll($checkboxListItems);
+            updateScollBar();
         });
 
         // Collapse all action
         $('[data-field-checkboxlist-collapse-all]').off().on('click', function (e) {
             e.preventDefault();
-            var $this = $(this);
 
-            $this.closest('.field-checkboxlist').find('.checkboxlist-item').each(function () {
-                var $this = $(this);
-                closeLevel($this)
-            });
+            closeAll($checkboxListItems);
+            updateScollBar();
         });
 
         // Open selected action
         $('[data-field-checkboxlist-expand-checked]').off().on('click', function (e) {
             e.preventDefault();
-            var $this = $(this);
 
-            $this.closest('.field-checkboxlist').find('.checkboxlist-item:has(input:checked)').each(function () {
-                var $this = $(this);
-                openLevel($this)
-            });
+            closeAll($checkboxListItems);
+            openAll($checkboxListItems.filter(':has(input:checked)'));
+            updateScollBar();
         });
     })
 }(window.jQuery);
