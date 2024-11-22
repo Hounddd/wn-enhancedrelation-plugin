@@ -1,6 +1,7 @@
 <?php
 $fieldOptions = $field->options();
 $checkedValues = (array) $field->value;
+$nameFrom = $this->nameFrom;
 $readOnly = $this->previewMode || $field->readOnly || $field->disabled;
 $displayTree = $field->getConfig('displayTree', false);
 $quickTreeActions = $displayTree ? $field->getConfig('quickTreeActions', false) : false;
@@ -92,18 +93,15 @@ $quickselectEnabled = $field->getConfig('quickselect', $isScrollable);
             <?php
             if ($displayTree) :
                 $index = 1;
-                $level = -1;
 
                 function renderCheckboxLine(
                     $field,
                     array $checkedValues,
                     array $fieldOptions,
+                    string $nameFrom,
                     bool $readOnly,
-                    int &$index,
-                    int $level = 0
+                    int &$index
                 ) {
-                    $level++;
-
                     foreach ($fieldOptions as $value => $option) :
                         $index++;
                         $checkboxId = 'checkbox_'. $field->getId() .'_'. $index;
@@ -111,12 +109,12 @@ $quickselectEnabled = $field->getConfig('quickselect', $isScrollable);
                         if (!is_array($option)) {
                             $option = [$option];
                         }
+                        $children = array_get($option, 'children', []);
                         ?>
 
                         <div class="checkboxlist-item">
 
                             <div class="checkbox custom-checkbox">
-
                                 <input
                                     type="checkbox"
                                     id="<?= $checkboxId ?>"
@@ -126,21 +124,18 @@ $quickselectEnabled = $field->getConfig('quickselect', $isScrollable);
                                     <?= in_array($value, $checkedValues) ? 'checked="checked"' : '' ?>>
 
                                 <label for="<?= $checkboxId ?>">
-                                    <?= e(trans($option['name'])) ?>
+                                    <?= e(trans($option[$nameFrom])) ?>
                                 </label>
                             </div>
 
-                            <?php if (is_array($option['children']) && count($option['children']) > 0) : ?>
+                            <?php if (count($children) > 0) : ?>
                                 <a href="javascript:;" class="checkboxlist-item-expand-collapse">
                                     <i class="icon-chevron-right"></i>
                                 </a>
-                            <?php endif ?>
-
-                            <?php if (is_array($option['children']) && count($option['children']) > 0) : ?>
                                 <div class="checkboxlist-children">
                                     <div id="<?= $checkboxId ?>_children">
                                         <?php
-                                            e(renderCheckboxLine($field, $checkedValues, $option['children'], $readOnly, $index, $level));
+                                            e(renderCheckboxLine($field, $checkedValues, $children, $nameFrom, $readOnly, $index));
                                         ?>
                                     </div>
                                 </div>
@@ -150,10 +145,8 @@ $quickselectEnabled = $field->getConfig('quickselect', $isScrollable);
                     endforeach;
                 }
 
-                renderCheckboxLine($field, $checkedValues, $fieldOptions, $readOnly, $index, $level);
-            ?>
-
-            <?php else :
+                renderCheckboxLine($field, $checkedValues, $fieldOptions, $nameFrom, $readOnly, $index);
+            else :
                 $index = 0;
                 foreach ($fieldOptions as $value => $option):
                     $index++;
@@ -162,7 +155,6 @@ $quickselectEnabled = $field->getConfig('quickselect', $isScrollable);
                         $option = [$option];
                     }
                     ?>
-
                     <div class="checkbox custom-checkbox">
                         <input
                             type="checkbox"

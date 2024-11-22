@@ -137,12 +137,12 @@ class EnhancedRelation extends \Backend\FormWidgets\Relation
                     /*
                      * Recursive helper function
                      */
-                    $buildCollection = function ($items) use (&$buildCollection) {
+                    $buildCollection = function ($items) use (&$buildCollection, $nameFrom, $primaryKeyName) {
                         $result = [];
 
                         foreach ($items as $item) {
-                            $result[$item->id] = [
-                                'name' => $item->name
+                            $result[$item->{$primaryKeyName}] = [
+                                strval($nameFrom) => $item->{$nameFrom}
                             ];
 
                             /*
@@ -150,9 +150,9 @@ class EnhancedRelation extends \Backend\FormWidgets\Relation
                              */
                             $childItems = $item->getChildren();
                             if ($childItems->count() > 0) {
-                                $result[$item->id]['children'] = $buildCollection($childItems);
+                                $result[$item->{$primaryKeyName}]['children'] = $buildCollection($childItems);
                             } else {
-                                $result[$item->id]['children'] = [];
+                                $result[$item->{$primaryKeyName}]['children'] = [];
                             }
                         }
 
