@@ -160,6 +160,12 @@ class EnhancedRelation extends \Backend\FormWidgets\Relation
                     };
 
                     $field->options = $buildCollection($result->toNested());
+
+                    // Need this PR to get merged :
+                    // https://github.com/wintercms/storm/pull/193
+                    //
+                    // $field->options = $result->toNestedArray($nameFrom, $primaryKeyName);
+                    //
                 } else {
                     $field->options = $result->listsNested($nameFrom, $primaryKeyName);
                 }
