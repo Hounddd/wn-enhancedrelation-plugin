@@ -7,8 +7,25 @@ The aim of this plugin is to study the possible support of tree display for rela
 The model associated with the field must use the `Winter\Storm\Database\Traits\NestedTree` trait.
 
 ## Installation
+*Let assume you're in the root of your wintercms installation*
 
-Copy this plugin into the `/plugins/hounddd/enhancedrelation` directory of your Winter CMS installation.
+### Using composer
+Just run this command
+```bash
+composer require hounddd/wn-enhancedrelation-plugin
+```
+
+### Clone
+Clone this repo into your winter plugins folder.
+
+```bash
+cd plugins
+mkdir hounddd && cd hounddd
+git clone https://github.com/Hounddd/wn-enhancedrelation-plugin enhancedrelation
+```
+
+> **Note**:
+> In both cases, run `php artisan migrate` command to run plugin's migrations
 
 ## Usage
 
