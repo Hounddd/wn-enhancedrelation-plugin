@@ -2,7 +2,7 @@
 
 return [
     'plugin' => [
-        'name' => 'EnhancedRelationFormWidget',
+        'name' => 'EnhancedRelation',
         'description' => 'Ajout de l\'affichage en arborescence pour les champs de formulaire de type relation',
     ],
     'permissions' => [

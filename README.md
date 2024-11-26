@@ -8,7 +8,7 @@ The model associated with the field must use the `Winter\Storm\Database\Traits\N
 
 ## Installation
 
-Copy this plugin into the `/plugins/hounddd/enhancedrelationformwidget` directory of your Winter CMS installation.
+Copy this plugin into the `/plugins/hounddd/enhancedrelation` directory of your Winter CMS installation.
 
 ## Usage
 

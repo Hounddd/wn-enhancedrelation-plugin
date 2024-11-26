@@ -1,13 +1,13 @@
 <?php
 
-namespace Hounddd\EnhancedRelationFormWidget;
+namespace Hounddd\EnhancedRelation;
 
 use Backend;
 use Backend\Models\UserRole;
 use System\Classes\PluginBase;
 
 /**
- * EnhancedRelationFormWidget Plugin Information File
+ * EnhancedRelation Plugin Information File
  */
 class Plugin extends PluginBase
 {
@@ -17,8 +17,8 @@ class Plugin extends PluginBase
     public function pluginDetails(): array
     {
         return [
-            'name'        => 'hounddd.enhancedrelationformwidget::lang.plugin.name',
-            'description' => 'hounddd.enhancedrelationformwidget::lang.plugin.description',
+            'name'        => 'hounddd.enhancedrelation::lang.plugin.name',
+            'description' => 'hounddd.enhancedrelation::lang.plugin.description',
             'author'      => 'Hounddd',
             'icon'        => 'icon-leaf'
         ];
@@ -32,7 +32,7 @@ class Plugin extends PluginBase
     public function registerFormWidgets()
     {
         return [
-            'Hounddd\EnhancedRelationFormWidget\FormWidgets\EnhancedRelation' => 'enhanced-relation'
+            'Hounddd\EnhancedRelation\FormWidgets\EnhancedRelation' => 'enhanced-relation'
         ];
     }
 }

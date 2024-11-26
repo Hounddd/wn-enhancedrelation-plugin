@@ -1,6 +1,6 @@
 <?php
 
-namespace Hounddd\EnhancedRelationFormWidget\FormWidgets;
+namespace Hounddd\EnhancedRelation\FormWidgets;
 
 use Db;
 use Lang;
@@ -53,8 +53,8 @@ class EnhancedRelation extends \Backend\FormWidgets\Relation
      */
     protected function loadAssets()
     {
-        $this->addCss('css/enhancedrelation.css', 'Hounddd.EnhancedRelationFormWidget');
-        $this->addJs('js/enhancedrelation.js', 'Hounddd.EnhancedRelationFormWidget');
+        $this->addCss('css/enhancedrelation.css', 'Hounddd.EnhancedRelation');
+        $this->addJs('js/enhancedrelation.js', 'Hounddd.EnhancedRelation');
     }
 
     /**

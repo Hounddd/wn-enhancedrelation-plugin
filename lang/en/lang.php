@@ -2,7 +2,7 @@
 
 return [
     'plugin' => [
-        'name' => 'EnhancedRelationFormWidget',
+        'name' => 'EnhancedRelation',
         'description' => 'Add support of tree display for relation type form fields',
     ],
     'permissions' => [
