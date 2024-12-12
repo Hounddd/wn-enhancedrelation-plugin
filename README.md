@@ -2,6 +2,8 @@
 
 The aim of this plugin is to study the possible support of tree display for relation form fields.
 
+![Winter relation formWidget with tree](https://github.com/hounddd/wn-enhancedrelation-plugin/blob/main/.github/relation_with_tree.gif?raw=true)
+
 ## Prerequisites
 
 The model associated with the field must use the `Winter\Storm\Database\Traits\NestedTree` trait.
