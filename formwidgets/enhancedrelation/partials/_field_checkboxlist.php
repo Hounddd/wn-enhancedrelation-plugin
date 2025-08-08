@@ -129,7 +129,7 @@ $quickselectEnabled = $field->getConfig('quickselect', $isScrollable);
                             </div>
 
                             <?php if (count($children) > 0) : ?>
-                                <a href="javascript:;" class="checkboxlist-item-expand-collapse">
+                                <a href="javascript:;" class="checkboxlist-item-toggle">
                                     <i class="icon-chevron-right"></i>
                                 </a>
                                 <div class="checkboxlist-children">

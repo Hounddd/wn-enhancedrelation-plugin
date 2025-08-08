@@ -1,3 +1,5 @@
+import '../../less/relation.less';
+
 ((Snowboard) => {
     /**
      * Relation form widget.
